@@ -11,8 +11,8 @@ Responsive and user-friendly UI
 
 🚀 Technologies Used
 HTML, CSS, JavaScript,PHP
-Chart.js (or whichever charting library you used)
-LocalStorage / Backend (if any)
+Chart.js 
+LocalStorag 
 for user login i have used mysql to store the data 
 
 📈 Future Improvements
