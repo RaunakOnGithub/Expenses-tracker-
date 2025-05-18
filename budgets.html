@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget & Goals - Expense Buddy</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <i class="fas fa-wallet"></i>
+        <span>Expense Buddy</span>
+      </div>
+      <div class="nav-links">
+        <ul>
+          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="transactions.html"><i class="fas fa-exchange-alt"></i> Transactions</a></li>
+          <li><a href="budgets.html" class="active"><i class="fas fa-chart-pie"></i> Budget & Goals</a></li>
+        </ul>
+      </div>
+      <div class="theme-toggle">
+        <label class="theme-toggle-label">
+          <i class="fas fa-moon" style="color: white;"></i>
+          <input type="checkbox" id="theme-toggle" class="theme-toggle-input">
+          <span class="theme-toggle-slider"></span>
+        </label>
+      </div>
+      <div class="mobile-menu">
+        <i class="fas fa-bars" id="menu-toggle"></i>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="budget-planning-section">
+      <div class="container">
+        <h2 class="section-title">Set Your Budget & Goals</h2>
+        
+        <div class="form-container">
+          <h3 class="form-title">Create a Budget Plan</h3>
+          <div class="form-group">
+            <label for="budget-category"><i class="fas fa-folder"></i> Category</label>
+            <select id="budget-category">
+              <option value="food">Food & Dining</option>
+              <option value="transport">Transportation</option>
+              <option value="utilities">Utilities</option>
+              <option value="entertainment">Entertainment</option>
+              <option value="shopping">Shopping</option>
+              <option value="health">Healthcare</option>
+              <option value="others">Others</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="budget-amount"><i class="fas fa-rupee-sign"></i> Budget Amount</label>
+            <input type="number" id="budget-amount" min="0" step="0.01" placeholder="Set budget amount" required>
+            <span class="error-message" id="budget-amount-error"></span>
+          </div>
+          <div class="form-group">
+            <label for="goal-amount"><i class="fas fa-bullseye"></i> Goal Amount (Optional)</label>
+            <input type="number" id="goal-amount" min="0" step="0.01" placeholder="Set savings goal">
+          </div>
+          <button class="add-btn" onclick="setBudget()">
+            <i class="fas fa-save"></i> Save Budget
+          </button>
+        </div>
+
+        <div class="budget-controls">
+          <button class="clear-btn" onclick="clearBudgets()">
+            <i class="fas fa-trash-alt"></i> Clear All Budgets
+          </button>
+        </div>
+
+        <div id="budgetList" class="budget-list">
+          <!-- Budget items will be displayed here -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

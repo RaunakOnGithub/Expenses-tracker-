@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Buddy - Smart Expense Tracker</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <i class="fas fa-wallet"></i>
+        <span>Expense Buddy</span>
+      </div>
+      <div class="nav-links">
+        <ul>
+          <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="transactions.html"><i class="fas fa-exchange-alt"></i> Transactions</a></li>
+          <li><a href="budgets.html"><i class="fas fa-chart-pie"></i> Budget & Goals</a></li>
+          <li><a href="loginpage.html">Sign In</a></li>
+        </ul>
+      </div>
+      <div class="theme-toggle">
+        <label class="theme-toggle-label">
+          <i class="fas fa-moon" style="color: white;"></i>
+          <input type="checkbox" id="theme-toggle" class="theme-toggle-input">
+          <span class="theme-toggle-slider"></span>
+        </label>
+      </div>
+      <div class="mobile-menu">
+        <i class="fas fa-bars" id="menu-toggle"></i>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1>Track your <span class="accent">Money</span></h1>
+        <p class="hero-subtitle">Manage your</p>
+        <span id="element" class="animated-text"></span>
+        <div class="cta-buttons">
+          <a href="#tracker" class="btn-primary">Get Started</a>
+          <a href="budgets.html" class="btn-secondary">Learn More</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="img.jpg" alt="Expense tracking illustration">
+      </div>
+    </section>
+
+    <div class="wave-divider">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100">
+        <path fill="#977ae7" fill-opacity="1" d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
+      </svg>
+    </div>
+
+    <section id="features" class="features-section">
+      <h2 class="section-title">Why Choose Expense Buddy?</h2>
+      <div class="features-container">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <!-- nice  -->
+          <div id="app">
+          <h3>Visual Analytics</h3>
+          <p>See where your money goes with beautiful charts and graphs</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3>Mobile Friendly</h3>
+          <p>Track expenses on the go from any device</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Secure Storage</h3>
+          <p>Your financial data is stored securely in your browser</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="financial-overview-section">
+      <div class="container">
+        <h2 class="section-title">Smart Savings Management</h2>
+        <div class="financial-overview-content">
+          <div class="financial-image">
+            <img src="img2.jpeg" alt="Smart savings management illustration">
+          </div>
+          <div class="financial-text">
+            <h3>Build Your Savings Habit</h3>
+            <p>Expense Buddy makes it easy to set aside money for your future goals. Track your progress and watch your savings grow over time.</p>
+            <ul class="financial-benefits">
+              <li><i class="fas fa-check-circle"></i> Create separate savings categories</li>
+              <li><i class="fas fa-check-circle"></i> Set automatic savings rules</li>
+              <li><i class="fas fa-check-circle"></i> Visualize your savings growth</li>
+              <li><i class="fas fa-check-circle"></i> Receive savings milestone notifications</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tracker" class="tracker-section">
+      <div class="container">
+        <h2 class="section-title">Expense Tracker</h2>
+        <div class="balance-container">
+          <div class="balance-card total">
+            <div class="card-icon"><i class="fas fa-wallet"></i></div>
+            <div class="card-content">
+              <h3>Total Balance</h3>
+              <p id="total-balance">₹0.00</p>
+            </div>
+          </div>
+          <div class="balance-card income">
+            <div class="card-icon"><i class="fas fa-arrow-circle-up"></i></div>
+            <div class="card-content">
+              <h3>Total Income</h3>
+              <p id="total-income">₹0.00</p>
+            </div>
+          </div>
+          <div class="balance-card expense">
+            <div class="card-icon"><i class="fas fa-arrow-circle-down"></i></div>
+            <div class="card-content">
+              <h3>Total Expenses</h3>
+              <p id="total-expenses">₹0.00</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-container">
+          <h3 class="form-title">Add New Transaction</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="description"><i class="fas fa-tag"></i> Description</label>
+              <input type="text" id="description" placeholder="What was this transaction for?" required>
+              <span class="error-message" id="description-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="amount"><i class="fas fa-rupee-sign"></i> Amount</label>
+              <input type="number" id="amount" min="0" step="0.01" placeholder="Enter amount" required>
+              <span class="error-message" id="amount-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="type"><i class="fas fa-exchange-alt"></i> Type</label>
+              <select id="type" onchange="toggleCategory()">
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+              </select>
+            </div>
+            <div class="form-group" id="categoryGroup" style="display: none;">
+              <label for="category"><i class="fas fa-folder"></i> Category</label>
+              <select id="category">
+                <option value="food">Food & Dining</option>
+                <option value="transport">Transportation</option>
+                <option value="utilities">Utilities</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="shopping">Shopping</option>
+                <option value="health">Healthcare</option>
+                <option value="others">Others</option>
+              </select>
+            </div>
+            <div class="form-group" id="dateGroup">
+              <label for="transactionDate"><i class="fas fa-calendar"></i> Date</label>
+              <input type="date" id="transactionDate">
+            </div>
+          </div>
+          <button onclick="handleAddTransaction()" class="add-btn">
+            <i class="fas fa-plus-circle"></i> Add Transaction
+          </button>
+        </div>
+
+        <div class="charts-container">
+          <div class="chart-wrapper">
+            <h3 class="chart-title"><i class="fas fa-chart-pie"></i> Income vs Expenses</h3>
+            <canvas id="balanceChart"></canvas>
+          </div>
+          <div class="chart-wrapper">
+            <h3 class="chart-title"><i class="fas fa-chart-pie"></i> Expenses by Category</h3>
+            <canvas id="categoryChart"></canvas>
+          </div>
+          <div class="chart-wrapper">
+            <h3 class="chart-title"><i class="fas fa-chart-line"></i> Spending Trends</h3>
+            <canvas id="trendChart"></canvas>
+          </div>
+        </div>
+
+        <div class="transactions-section">
+          <h3 class="section-title"><i class="fas fa-list"></i> Recent Transactions</h3>
+          <div id="transactionList" class="transaction-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="budget-planning-section">
+      <div class="container">
+        <h2 class="section-title">Smart Budget Planning</h2>
+        <div class="budget-planning-content">
+          <div class="budget-text">
+            <h3>Take Control of Your Finances</h3>
+            <p>Create detailed budgets that help you stay on track with your financial goals. Expense Buddy makes it simple to allocate funds across different categories and monitor your spending.</p>
+            <ul class="budget-features">
+              <li><i class="fas fa-check-circle"></i> Categorize your expenses</li>
+              <li><i class="fas fa-check-circle"></i> Set monthly spending limits</li>
+              <li><i class="fas fa-check-circle"></i> Track bills and recurring payments</li>
+              <li><i class="fas fa-check-circle"></i> Get alerts when approaching budget limits</li>
+            </ul>
+          </div>
+          <div class="budget-image">
+            <img src="img3.jpeg" alt="Budget planning illustration">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h3><i class="fas fa-wallet"></i> Expense Buddy</h3>
+        <p>Take control of your finances with our easy-to-use expense tracking tool. Monitor spending, set budgets, and achieve your financial goals.</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="footer-section links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+          <li><a href="transactions.html"><i class="fas fa-chevron-right"></i> Transactions</a></li>
+          <li><a href="budgets.html"><i class="fas fa-chevron-right"></i> Budget & Goals</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> Terms of Service</a></li>
+        </ul>
+      </div>
+      <div class="footer-section contact">
+        <h4>Stay Updated</h4>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit"><i class="fas fa-paper-plane"></i> Subscribe</button>
+        </form>
+        <div class="contact-info">
+          <p><i class="fas fa-envelope"></i> support@expensebuddy.com</p>
+          <p><i class="fas fa-phone"></i> +91 123 456 7890</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Expense Buddy. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script>
+    var typed = new Typed('#element', {
+      strings: ['transactions', 'budget', 'income', 'expenses'],
+      typeSpeed: 50,
+      loop: true,
+      backSpeed: 30,
+      backDelay: 1500
+    });
+
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
